@@ -1,0 +1,21 @@
+[  100] Cole: Shutdown by Cole.
+[  100] Cole: Shutdown by Cole.
+[  100] Cole: Shutdown by Cole.
+[  100] Cole: Shutdown by Cole.
+[32178] Cole: Shutdown by Cole.
+[10324] Cole: Shutdown by Cole.
+[29083] Cole: Shutdown by Cole.
+[29083] Cole: Shutdown by Cole.
+[  100] Cole: Shutdown by Cole.
+[  113] Cole: Shutdown by Cole.
+[*****] [*****] FILE: ../player/c/Cole LINE: 51
+[  100] Cole: Shutdown by Cole.
+[  100] Cole: Shutdown by Cole.
+[*****] [*****] FILE: $ LINE: 17
+duplicate vnum
+[*****] [*****] FILE: ../player/s/Sophie LINE: 51
+[*****] [*****] FILE: $ LINE: 17
+duplicate vnum
+[  100] Cole: Shutdown by Cole.
+[  100] Cole: Shutdown by Cole.
+[  100] Cole: Shutdown by Cole.

@@ -1,0 +1,77 @@
+#AREA   Sophie's Area~
+
+
+
+#AUTHOR Sophie~
+
+#RANGES
+0 103 0 103
+$
+
+#FLAGS
+0
+
+#ECONOMY 0 130045000
+
+#MOBILES
+#35000
+firstmob~
+a newly created firstmob~
+Some god abandoned a newly created firstmob here.
+~
+~
+1 0 0 Z
+1 0 0 0d0+0 0d0+0
+0 0
+8 8 0
+10 10 10 10 10 10 10
+0 0 0 0 0
+0 0 0 0 1 1 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+#0
+
+
+#OBJECTS
+#0
+
+
+#ROOMS
+#35000
+Inside a Sparti Cloning Cylinder~
+You wake up as if from a long sleep. Slowly your mind begins to fill with
+the memories of a life you never lived. At first they are distant
+memories. Foreign, unattached, but slowly their intensity increases
+overwhelming you with emotions from a life you never lived. Pain. Love.
+Sorrow. Joy. Tears swell up in your eyes as you begin to sob, overwhelemed
+by you existance and saddened by the love of a life you never lived.   
+ 
+Take a few moments to collect your thoughts. Then "leave" the cylinder and
+begin a new life.
+ 
+* Don't forget... the first thing you should do is go clone yourself
+again... you might regret it if you don't...
+ 
+~
+0 8651780 1
+D10
+~
+~
+264192 -1 10009
+S
+#0
+
+
+#SHOPS
+0
+
+
+#REPAIRS
+0
+
+
+#SPECIALS
+S
+
+
+#$
