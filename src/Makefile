@@ -2,7 +2,7 @@ CC      = gcc
 PROF    = 
 
 #Uncomment to compile in Cygwin
-#CYGWIN = -DCYGWIN
+CYGWIN = -DCYGWIN
 
 #Uncomment the line below if you are getting warnings about undefined math functions
 NEED_MATH = -lm
