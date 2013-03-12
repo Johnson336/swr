@@ -1,0 +1,184 @@
+Mon Mar 11 21:32:44 2013 :: Booting Database
+ 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+Mon Mar 11 21:32:44 2013 :: [*****] BOOT: ---------------------[ Boot Log ]--------------------
+Mon Mar 11 21:32:44 2013 :: Loading commands
+Mon Mar 11 21:32:44 2013 :: Loading sysdata configuration...
+Mon Mar 11 21:32:44 2013 :: Loading socials
+Mon Mar 11 21:32:44 2013 :: Loading skill table
+Mon Mar 11 21:32:44 2013 :: Sorting skill table...
+Mon Mar 11 21:32:44 2013 :: Loading herb table
+Mon Mar 11 21:32:44 2013 :: Making wizlist
+Mon Mar 11 21:32:44 2013 :: Initializing random number generator
+Mon Mar 11 21:32:44 2013 :: Setting time and weather
+Mon Mar 11 21:32:44 2013 :: Assigning gsn's
+Mon Mar 11 21:32:44 2013 :: Reading in area files...
+(help.are)
+limbo.are     : Rooms:     1 - 45    Objs:     2 - 99    Mobs:     1 - 99
+newacad.are   : Rooms: 10300 - 10430 Objs: 10300 - 10499 Mobs: 10340 - 10499
+coruscant_streets: Rooms:   300 - 499   Objs:   300 - 499   Mobs:   300 - 499
+space.are     : Rooms: 32000 - 32499 Objs: 32000 - 32499 Mobs: 32000 - 32499
+menari_spaceport: Rooms:   199 - 226   Objs:   200 - 225   Mobs:   200 - 225
+omni_complex  : Rooms:   100 - 115   Objs:   100 - 103   Mobs:     0 - 0
+adari         : Rooms: 29000 - 29057 Objs: 29000 - 29059 Mobs: 29000 - 29059
+gamorr        : Rooms: 28000 - 28199 Objs: 28000 - 28199 Mobs: 28000 - 28139
+adari01       : Rooms: 29060 - 29158 Objs: 29060 - 29065 Mobs: 29060 - 29158
+monument.plaza: Rooms: 26000 - 26099 Objs: 26000 - 26099 Mobs: 26000 - 26099
+tatooine      : Rooms: 31500 - 31999 Objs: 31500 - 31524 Mobs: 31500 - 31532
+darkhand      : Rooms:   600 - 699   Objs:   600 - 699   Mobs:   600 - 699
+honoghr       : Rooms:  1000 - 1047  Objs:  1000 - 1099  Mobs:  1000 - 1099
+cloning       : Rooms: 10000 - 10010 Objs: 10000 - 10009 Mobs: 10000 - 10009
+senate        : Rooms: 10100 - 10199 Objs: 10100 - 10199 Mobs: 10100 - 10199
+kashyyyk      : Rooms: 28600 - 28643 Objs: 28600 - 28605 Mobs: 28600 - 28608
+a.byss.city   : Rooms: 28200 - 28399 Objs: 28200 - 28399 Mobs: 28200 - 28218
+grand_towers  : Rooms:  5000 - 5099  Objs:  5000 - 5099  Mobs:  5000 - 5099
+land.vehicles : Rooms: 30000 - 30999 Objs: 30000 - 30999 Mobs: 30000 - 30999
+endor         : Rooms:  3000 - 3099  Objs:  3000 - 3008  Mobs:  3000 - 3005
+Sorosuub      : Rooms:  6000 - 6098  Objs:  6000 - 6099  Mobs:     0 - 0
+jedi_acad     : Rooms:  6099 - 6199  Objs:  6100 - 6199  Mobs:  6100 - 6199
+hunter.ships  : Rooms:  6400 - 6499  Objs:  6400 - 6402  Mobs:  6400 - 6400
+corus.pt2     : Rooms: 10200 - 10299 Objs: 10200 - 10299 Mobs: 10200 - 10299
+mc90          : Rooms:  6700 - 6799  Objs:  6700 - 6799  Mobs:  6700 - 6799
+hunters.guild : Rooms:  6600 - 6633  Objs:  6600 - 6611  Mobs:  6600 - 6604
+mall          : Rooms:  7300 - 7399  Objs:  7300 - 7316  Mobs:  7300 - 7316
+mon_cal.are   : Rooms: 21000 - 21499 Objs: 21000 - 21435 Mobs: 21000 - 21499
+quarren.are   : Rooms:  6800 - 7200  Objs:  6800 - 6899  Mobs:  6800 - 6838
+dagobah       : Rooms:  8200 - 8290  Objs:     0 - 0     Mobs:     0 - 0
+throne.city   : Rooms:   700 - 799   Objs:   700 - 799   Mobs:   700 - 799
+nal.hut       : Rooms: 21500 - 21515 Objs: 21500 - 21799 Mobs: 21500 - 21799
+monolith      : Rooms:  8900 - 8999  Objs:  8900 - 8999  Mobs:  8900 - 8999
+corus.jail    : Rooms:  9000 - 9049  Objs:  9000 - 9049  Mobs:  9000 - 9049
+byss.jail     : Rooms:  9050 - 9099  Objs:  9050 - 9099  Mobs:  9050 - 9099
+nar.shadda    : Rooms:   500 - 599   Objs:   500 - 541   Mobs:   500 - 573
+sophie.are    : Rooms: 35000 - 35000 Objs:     0 - 0     Mobs: 35000 - 35000
+Mon Mar 11 21:32:44 2013 :: Fixing exits
+Mon Mar 11 21:32:44 2013 :: Initializing economy
+Mon Mar 11 21:32:44 2013 :: Loading buildlist
+Mon Mar 11 21:32:44 2013 :: ../gods/Admin
+Mon Mar 11 21:32:44 2013 :: ../gods/Cole
+Mon Mar 11 21:32:44 2013 :: ../gods/Sophie
+Mon Mar 11 21:32:44 2013 :: Loading boards
+Mon Mar 11 21:32:44 2013 :: ../boards/student.board
+Mon Mar 11 21:32:44 2013 :: ../boards/imm_monitor
+Mon Mar 11 21:32:44 2013 :: ../boards/quest.board
+Mon Mar 11 21:32:44 2013 :: ../boards/galactic_net
+Mon Mar 11 21:32:44 2013 :: ../boards/mail_net
+Mon Mar 11 21:32:44 2013 :: ../boards/nr.board
+Mon Mar 11 21:32:44 2013 :: ../boards/imperial.board
+Mon Mar 11 21:32:44 2013 :: ../boards/idea
+Mon Mar 11 21:32:44 2013 :: ../boards/bidea.brd
+Mon Mar 11 21:32:44 2013 :: ../boards/ackbuild.brd
+Mon Mar 11 21:32:44 2013 :: ../boards/blueprint.brd
+Mon Mar 11 21:32:44 2013 :: ../boards/jedi.board
+Mon Mar 11 21:32:44 2013 :: Loading clans
+Mon Mar 11 21:32:44 2013 :: Loading clans...
+Mon Mar 11 21:32:44 2013 :: empire.clan
+Mon Mar 11 21:32:44 2013 :: Loading clan storage room
+Mon Mar 11 21:32:44 2013 :: republic.clan
+Mon Mar 11 21:32:44 2013 :: Loading clan storage room
+Mon Mar 11 21:32:44 2013 :: corperate.clan
+Mon Mar 11 21:32:44 2013 :: Loading clan storage room
+Mon Mar 11 21:32:44 2013 :: Zorgos.clan
+Mon Mar 11 21:32:44 2013 :: Loading clan storage room
+Mon Mar 11 21:32:44 2013 :: hunters.guild
+Mon Mar 11 21:32:44 2013 :: Loading clan storage room
+Mon Mar 11 21:32:44 2013 :: jedi.order
+Mon Mar 11 21:32:44 2013 :: Loading clan storage room
+Mon Mar 11 21:32:44 2013 :: blacksun
+Mon Mar 11 21:32:44 2013 :: Loading clan storage room
+Mon Mar 11 21:32:44 2013 :: the.emporers.hand
+Mon Mar 11 21:32:44 2013 :: Loading clan storage room
+Mon Mar 11 21:32:44 2013 :: Imperial.Navy
+Mon Mar 11 21:32:44 2013 :: Loading clan storage room
+Mon Mar 11 21:32:44 2013 :: rogue.squadron
+Mon Mar 11 21:32:44 2013 :: Loading clan storage room
+Mon Mar 11 21:32:44 2013 :: $
+Mon Mar 11 21:32:44 2013 ::  Done clans
+Sorting clans....
+Mon Mar 11 21:32:44 2013 ::  Done sorting
+Mon Mar 11 21:32:44 2013 :: Loading senate
+Mon Mar 11 21:32:44 2013 :: Loading bans
+Mon Mar 11 21:32:44 2013 :: Loading corpses
+Mon Mar 11 21:32:44 2013 :: Loading space
+Mon Mar 11 21:32:44 2013 :: Loading space...
+Mon Mar 11 21:32:44 2013 ::  Done starsystems 
+Mon Mar 11 21:32:44 2013 :: Loading ships
+Mon Mar 11 21:32:44 2013 :: Loading ships...
+Mon Mar 11 21:32:44 2013 ::  Done ships 
+Mon Mar 11 21:32:44 2013 :: Loading bounties
+Mon Mar 11 21:32:44 2013 :: Loading disintigrations...
+Mon Mar 11 21:32:44 2013 ::  Done bounties 
+Mon Mar 11 21:32:44 2013 :: Loading governments
+Mon Mar 11 21:32:44 2013 :: Loading planets...
+Mon Mar 11 21:32:44 2013 :: coruscant
+Mon Mar 11 21:32:44 2013 :: byss
+Mon Mar 11 21:32:44 2013 :: honoghr
+Mon Mar 11 21:32:44 2013 :: gamorr
+Mon Mar 11 21:32:44 2013 :: endor
+Mon Mar 11 21:32:44 2013 :: Kashyyyk
+Mon Mar 11 21:32:44 2013 :: moncal
+Mon Mar 11 21:32:44 2013 :: adari
+Mon Mar 11 21:32:44 2013 :: tatooine
+Mon Mar 11 21:32:44 2013 :: alpha.centauri
+Mon Mar 11 21:32:44 2013 :: $
+Mon Mar 11 21:32:44 2013 ::  Done planets 
+Mon Mar 11 21:32:44 2013 :: Resetting areas
+Mon Mar 11 21:32:44 2013 :: Initializing socket
+Mon Mar 11 21:32:44 2013 :: Star Wars Reality ready on port 7777.
+Mon Mar 11 21:32:45 2013 :: IMC: Loading IMC2 command table...
+Mon Mar 11 21:32:45 2013 :: ***BUG*** IMC: imc_readcommand: Command imctemplates loaded with invalid function. Set to NULL.
+Mon Mar 11 21:32:45 2013 :: IMC: Loading IMC2 network data...
+Mon Mar 11 21:32:45 2013 :: IMC: Loading IMC2 help file...
+Mon Mar 11 21:32:45 2013 :: IMC: Loading IMC2 color table...
+Mon Mar 11 21:32:45 2013 :: IMC: IMC2 network data loaded. Autoconnect not set. IMC2 will need to be connected manually.
+Mon Mar 11 21:32:47 2013 :: Sock.sinaddr:  127.0.0.1, port -2561.
+Mon Mar 11 21:32:50 2013 :: Preloading player data for: Cole (6K)
+Mon Mar 11 21:32:52 2013 :: Loading player data for: Cole (6K)
+Mon Mar 11 21:32:52 2013 :: Cole (cnmeyer-intel) has connected.
+Error loading Lua startup file:
+ ../lua/startup.lua:26: module 'tprint' not found:
+	no field package.preload['tprint']
+	no file './tprint.lua'
+	no file '/usr/share/lua/5.1/tprint.lua'
+	no file '/usr/share/lua/5.1/tprint/init.lua'
+	no file '/usr/lib/lua/5.1/tprint.lua'
+	no file '/usr/lib/lua/5.1/tprint/init.lua'
+	no file './tprint.dll'
+	no file '/usr/lib/lua/5.1/tprint.dll'
+	no file '/usr/lib/lua/5.1/loadall.dll'
+stack traceback:
+	[C]: in function 'require'
+	../lua/startup.lua:26: in main chunk
+Warning: Lua script function 'reconnected' does not exist
+Warning: Lua script function 'entered_room' does not exist
+Warning: Lua script function 'entered_game' does not exist
+Warning: Lua script function 'looking' does not exist
+Warning: Lua script function 'char_update' does not exist
+Warning: Lua script function 'saving' does not exist
+Warning: Lua script function 'char_update' does not exist
+Warning: Lua script function 'saving' does not exist
+Mon Mar 11 21:36:14 2013 :: Cole has quit.
+Mon Mar 11 21:36:15 2013 :: Sock.sinaddr:  127.0.0.1, port -2559.
+Mon Mar 11 21:36:16 2013 :: Preloading player data for: Cole (6K)
+Mon Mar 11 21:36:17 2013 :: Loading player data for: Cole (6K)
+Mon Mar 11 21:36:17 2013 :: Cole (cnmeyer-intel) has connected.
+Error loading Lua startup file:
+ ../lua/startup.lua:26: module 'tprint' not found:
+	no field package.preload['tprint']
+	no file './tprint.lua'
+	no file '/usr/share/lua/5.1/tprint.lua'
+	no file '/usr/share/lua/5.1/tprint/init.lua'
+	no file '/usr/lib/lua/5.1/tprint.lua'
+	no file '/usr/lib/lua/5.1/tprint/init.lua'
+	no file './tprint.dll'
+	no file '/usr/lib/lua/5.1/tprint.dll'
+	no file '/usr/lib/lua/5.1/loadall.dll'
+stack traceback:
+	[C]: in function 'require'
+	../lua/startup.lua:26: in main chunk
+Warning: Lua script function 'reconnected' does not exist
+Warning: Lua script function 'entered_room' does not exist
+Warning: Lua script function 'entered_game' does not exist
+Warning: Lua script function 'looking' does not exist
+Mon Mar 11 21:36:25 2013 :: Log Cole: shutdown mud now
+Warning: Lua script function 'saving' does not exist
+Mon Mar 11 21:36:25 2013 :: Normal termination of game.

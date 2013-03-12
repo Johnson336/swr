@@ -163,6 +163,9 @@ void save_char_obj( CHAR_DATA * ch )
       return;
 
    saving_char = ch;
+   
+   call_lua (ch, "saving", NULL);
+   
    /*
     * save pc's clan's data while we're at it to keep the data in sync 
     */
@@ -739,6 +742,7 @@ bool load_char_obj( DESCRIPTOR_DATA * d, char *name, bool preload, bool copyover
    ch->was_sentinel = NULL;
    ch->plr_home = NULL;
    ch->pcdata->hotboot = FALSE;  /* Never changed except when PC is saved during hotboot save */
+   ch->L = NULL;  /* no Lua state yet */
 #ifdef IMC
    imc_initchar( ch );
 #endif

@@ -5,9 +5,9 @@ PROF    =
 CYGWIN = -DCYGWIN
 
 #Uncomment the line below if you are getting warnings about undefined math functions
-NEED_MATH = -lm
+#NEED_MATH = -lm
 
-L_FLAGS = $(PROF) $(NEED_MATH) -lz
+L_FLAGS = $(PROF) $(NEED_MATH) -lz -llua
 
 #IMC2 - Comment out to disable IMC2 support
 IMC = 1
@@ -20,7 +20,8 @@ C_FILES = act_comm.c act_info.c act_move.c act_obj.c act_wiz.c boards.c bounty.c
 	  build.c clans.c color.c comm.c comments.c const.c db.c fight.c \
 	  handler.c hashstr.c hotboot.c interp.c magic.c makeobjs.c mccp.c \
 	  md5.c misc.c mud_comm.c mud_prog.c player.c reset.c save.c shops.c \
-	  skills.c space.c special.c swskills.c tables.c track.c update.c
+	  skills.c space.c special.c swskills.c tables.c track.c update.c \
+	  lua_scripting.c lua_bits.c
 
 ifdef IMC
    C_FILES := imc.c $(C_FILES)

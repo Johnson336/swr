@@ -1409,7 +1409,7 @@ void show_title( DESCRIPTOR_DATA * d )
    CHAR_DATA *ch;
 
    ch = d->character;
-
+   
    if( !IS_SET( ch->pcdata->flags, PCFLAG_NOINTRO ) )
    {
       if( IS_SET( ch->act, PLR_ANSI ) )
@@ -1679,6 +1679,8 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
          }
          else
             log_string_plus( log_buf, LOG_COMM, ch->top_level );
+         open_lua (ch);  /* fire up Lua state */
+         call_lua (ch, "reconnected", ch->name);
          show_title( d );
          if( ch->pcdata->area )
             do_loadarea( ch, "" );
@@ -1988,6 +1990,10 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
          log_string_plus( log_buf, LOG_COMM, sysdata.log_level );
          to_channel( log_buf, CHANNEL_MONITOR, "Monitor", LEVEL_IMMORTAL );
          write_to_buffer( d, "Press [ENTER] ", 0 );
+         
+         open_lua (ch);  /* fire up Lua state */
+         call_lua (ch, "new_player", ch->name);
+         
          show_title( d );
          {
             int ability;
@@ -2329,6 +2335,9 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
          }
 
          act( AT_ACTION, "$n has entered the game.", ch, NULL, NULL, TO_ROOM );
+         
+         call_lua (ch, "entered_game", ch->name);
+         
          do_look( ch, "auto" );
          mail_count( ch );
          break;

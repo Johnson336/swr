@@ -6,8 +6,8 @@ Race         0
 MainAbility  7
 Languages    -1 8
 Toplevel     105
-Played       59645
-Room         36000
+Played       72309
+Room         100
 HpManaMove   5000 5000 0 0 5000 5000
 Force        18 0 5000 5000
 Gold         2142410760
@@ -28,12 +28,12 @@ Glory        0
 MGlory       0
 Hitroll      85
 Damroll      62
-Armor        -320
+Armor        -300
 Immune       639
 Restore_time 1239733224
 Mentalstate  0
 Password     n¾N3Œªãxœªó}n¼³~
-Lastplayed   1363046390
+Lastplayed   1363067990
 Bamfin       %s jumps out of a hole in your pocket.~
 Bamfout      You blink once and %s is gone.~
 Rank         &wK&zingpin&w~
@@ -210,7 +210,6 @@ Weapon       100 'force pikes'
 Weapon       100 'lightsabers'
 Weapon       100 'vibro-blades'
 Tongue       100 'common'
-AffectData   'armor' 1185 -20  17          0
 Killed       203 1
 Killed       304 1
 Killed       313 1

@@ -8,8 +8,8 @@ if ( "$1" != "" ) set port="$1"
 cd ../area
 
 # Set limits.
-limit coredumpsize unlimited
-limit stacksize unlimited
+#limit coredumpsize unlimited
+#limit stacksize unlimited
 if ( -e shutdown.txt ) rm -f shutdown.txt
 
 while ( 1 )

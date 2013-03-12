@@ -23,6 +23,17 @@
 #include <sys/cdefs.h>
 #include <sys/time.h>
 
+/*
+
+Lua includes :)
+
+NJG
+
+*/
+
+#include <lua.h>
+
+
 typedef int ch_ret;
 typedef int obj_ret;
 
@@ -2112,6 +2123,7 @@ struct char_data
    short main_ability;
    short colors[MAX_COLORS];
    int home_vnum; /* hotboot tracker */
+   lua_State *L;  /* for Lua scripting - NJG  */
 };
 
 struct killed_data
@@ -3840,6 +3852,9 @@ DECLARE_SPELL_FUN( spell_cure_addiction );
 #define SYSTEM_DIR	"../system/"   /* Main system files    */
 #define PROG_DIR	"../mudprogs/" /* MUDProg files     */
 #define CORPSE_DIR	"../corpses/"  /* Corpses        */
+
+#define LUA_DIR         "../lua/"   /* Where Lua source files are kept */
+
 #define AREA_LIST	"area.lst"  /* List of areas     */
 #define BAN_LIST        "ban.lst"   /* List of bans                 */
 #define CLAN_LIST	"clan.lst"  /* List of clans     */
@@ -3869,6 +3884,9 @@ DECLARE_SPELL_FUN( spell_cure_addiction );
 #define HERB_FILE	SYSTEM_DIR "herbs.dat"  /* Herb table       */
 #define SOCIAL_FILE	SYSTEM_DIR "socials.dat"   /* Socials       */
 #define COMMAND_FILE	SYSTEM_DIR "commands.dat"  /* Commands      */
+
+#define LUA_STARTUP   LUA_DIR "startup.lua"  /* script initialization */
+
 #define USAGE_FILE	SYSTEM_DIR "usage.txt"  /* How many people are on 
                                               * every half hour - trying to
                                               * determine best reboot time */
@@ -3891,6 +3909,18 @@ DECLARE_SPELL_FUN( spell_cure_addiction );
 #define	ST	SOCIALTYPE
 #define SK	SKILLTYPE
 #define SH      SHIP_DATA
+
+
+
+/*
+* Lua stuff (Nick Gammon)
+*/
+
+void open_lua  (CHAR_DATA * ch);
+void close_lua (CHAR_DATA * ch);
+void call_lua (CHAR_DATA * ch, const char * fname, const char * argument);
+void call_lua_num (CHAR_DATA * ch, const char * fname, const int argument);
+
 
 /* act_comm.c */
 void sound_to_room( ROOM_INDEX_DATA * room, char *argument );

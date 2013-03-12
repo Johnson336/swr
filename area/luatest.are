@@ -1,0 +1,119 @@
+#AREA   Lua Test Area~
+
+
+
+#AUTHOR Cole~
+
+#RANGES
+0 0 0 0
+$
+
+#FLAGS
+0
+
+#ECONOMY 0 6250000
+
+#MOBILES
+#36000
+first mob~
+a newly created first mob~
+Some god abandoned a newly created first mob here.
+~
+~
+1 0 0 Z
+1 0 0 0d0+0 0d0+0
+0 0
+8 8 0
+10 10 10 10 10 10 10
+0 0 0 0 0
+0 0 0 0 1 1 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+#36100
+last mob~
+a newly created last mob~
+Some god abandoned a newly created last mob here.
+~
+~
+1 0 0 Z
+1 0 0 0d0+0 0d0+0
+0 0
+8 8 0
+10 10 10 10 10 10 10
+0 0 0 0 0
+0 0 0 0 1 1 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+#0
+
+
+#OBJECTS
+#36000
+first obj~
+a first obj~
+A first obj is here.~
+~
+13 0 0
+0 0 0 0
+1 0 0
+#36100
+last obj~
+a last obj~
+A last obj is here.~
+~
+13 0 0
+0 0 0 0
+1 0 0
+#0
+
+
+#ROOMS
+#36000
+&CLua Test Room&w~
+&wTest all your fancy new Lua mud progs here! And don't forget to foldarea
+luatest.are when you're finished. Oh yeah, and don't break the mud. 
+~
+0 4 1
+D0
+~
+~
+0 -1 36001
+> speech_prog test~
+if isimmort($n)
+  mpecho &GImmortal!&w
+else
+  mpecho &RMortal!&w
+endif
+~
+|
+S
+#36001
+&CLua Test Room 2&w~
+~
+0 4 1
+D2
+~
+~
+0 -1 36000
+S
+#36100
+Floating in a void~
+~
+0 4 1
+S
+#0
+
+
+#SHOPS
+0
+
+
+#REPAIRS
+0
+
+
+#SPECIALS
+S
+
+
+#$
