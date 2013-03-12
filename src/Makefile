@@ -12,7 +12,7 @@ L_FLAGS = $(PROF) $(NEED_MATH) -lz
 #IMC2 - Comment out to disable IMC2 support
 IMC = 1
 
-W_FLAGS = -Wall -Werror -Wshadow -Wformat-security -Winline -Wpointer-arith -Wcast-align -Wredundant-decls -Wstrict-prototypes
+W_FLAGS = -Wall -Wshadow -Wformat-security -Winline -Wpointer-arith -Wcast-align -Wredundant-decls -Wstrict-prototypes
 
 C_FLAGS = -g2 $(W_FLAGS) $(PROF)
 
