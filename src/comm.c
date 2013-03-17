@@ -208,6 +208,9 @@ int main( int argc, char **argv )
    /*
     * Run the game.
     */
+    
+   log_string( "Initializing Lua" );
+   open_mud_lua ();  /* initialize Lua engine */
    log_string( "Booting Database" );
    boot_db( fCopyOver );
    log_string( "Initializing socket" );
@@ -229,7 +232,9 @@ int main( int argc, char **argv )
       log_string( "Initiating hotboot recovery." );
       hotboot_recover(  );
    }
+   call_mud_lua ("starting_up", NULL);
    game_loop(  );
+   call_mud_lua ("shutting_down", NULL);
    close( control );
 #ifdef IMC
    imc_shutdown( FALSE );
@@ -238,6 +243,7 @@ int main( int argc, char **argv )
     * That's all, folks.
     */
    log_string( "Normal termination of game." );
+   close_mud_lua ();  /* finished with Lua */
    exit( 0 );
    return 0;
 }

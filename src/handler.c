@@ -1074,7 +1074,7 @@ void char_to_room( CHAR_DATA * ch, ROOM_INDEX_DATA * pRoomIndex )
       add_timer( ch, TIMER_SHOVEDRAG, 10, NULL, 0 );   /*-30 Seconds-*/
 
       
-      call_lua_num (ch, "entered_room", pRoomIndex->vnum);
+   call_lua_num (ch, "entered_room", pRoomIndex->vnum);
    /*
     * Delayed Teleport rooms             -Thoric
     * Should be the last thing checked in this function
@@ -3924,6 +3924,7 @@ void add_kill( CHAR_DATA * ch, CHAR_DATA * mob )
    vnum = mob->pIndexData->vnum;
    
    call_lua_num (ch, "killed_mob", vnum);
+   call_mud_lua_char_num ("killed_mob", ch->name, vnum);
    
    track = URANGE( 2, ( ( ch->skill_level[COMBAT_ABILITY] + 3 ) * MAX_KILLTRACK ) / LEVEL_AVATAR, MAX_KILLTRACK );
    for( x = 0; x < track; x++ )

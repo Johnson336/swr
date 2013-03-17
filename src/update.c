@@ -303,6 +303,10 @@ void advance_level( CHAR_DATA * ch, int ability )
 
    if( !IS_NPC( ch ) )
       REMOVE_BIT( ch->act, PLR_BOUGHT_PET );
+      
+  
+   call_lua_num (ch, "advance_level", ch->top_level);
+
 
    return;
 }

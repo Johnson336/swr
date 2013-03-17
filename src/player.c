@@ -481,6 +481,11 @@ char *get_race( CHAR_DATA * ch )
    return ( "Unknown" );
 }
 
+int get_main_ability( CHAR_DATA * ch )
+{
+	return ch->main_ability;
+}
+
 void do_oldscore( CHAR_DATA * ch, char *argument )
 {
    AFFECT_DATA *paf;

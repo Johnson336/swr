@@ -1,34 +1,90 @@
+-- Lua startup file for SMAUG Fuss 
+
+--   This is the PER-PLAYER file (one script state is made for each player)
+
+--   Written by Nick Gammon
+--   5th July 2007
+
+--     www.gammon.com.au
+
 os.setlocale ("", "time")
 
--- player-specific data - this will be saved to state file
+-- get directory, file names
+systeminfo = mud.system_info ()
 
-current_quests = {}
-completed_quests = {}
+-- table of event handlers
+-- each module can use table.insert to insert their own handler
+handlers = {
+    saving = {},        -- saving is special - we only open the file once
+    reconnected = {},   -- reconnected is special - first we load player state
+    }
 
+function MakeHandler (name)
+  return function (...)
+    for _, f in ipairs (handlers [name]) do
+      f (...)  -- call each handler
+    end -- for
+  end -- anonymous function
+end -- MakeHandler
+   
+-- install handlers into handlers table AFTER this code
+--  (this code below creates the handlers table)
+for _, name in ipairs {
+  "new_player", 
+  "entered_game",
+  "speech",
+  "entered_room",
+  "killed_mob",
+  "got_object",
+  "lost_object",
+  "looking",
+  "char_update",
+  "act",
+  "give",
+  "bribe",
+  "buy",
+  "wear",
+  "drop",
+  "repair",
+  "advance_level",
+  "use",
+  } do
+  _G [name] = MakeHandler (name)  -- make a function handler
+  handlers [name] = {}  -- make empty handlers table
+end -- for loop
 
--- helper functions
+-- we will require from Lua directory
+package.path = systeminfo.LUA_DIR .. "?.lua"
 
--- send to player - with newline
+require "tprint"
+require "serialize"
+require "utilities"
+
+-- -----------------------------------------------------------------------------
+--        Sending functions - leave up here in case modules need them
+-- -----------------------------------------------------------------------------
+
+-- send to character, concats multiple arguments, appends cr/newline
 function send (...)
-  mud.send_to_char (table.concat {...} .. "\n\r")
+  mud.send_to_char (table.concat {...} .. "\r\n")
 end -- send
 
--- formatted send to player - with newline
+-- formatted send (first argument is 'string.format' style)
 function fsend (s, ...)
-  mud.send_to_char (string.format (s, ...) .. "\n\r")
+  mud.send_to_char (string.format (s, ...) .. "\r\n")
 end -- send
 
--- send to player - without newline
+-- send to character, concats multiple arguments, does not append cr/newline
 function send_nocr (...)
   mud.send_to_char (table.concat {...})
 end -- send_nocr
 
-require "tprint"
-require "serialize"
+-- install other stuff here (like task system)
 
-systeminfo = mud.system_info ()  -- get file names, directories
+task    = require ("tasks").task  -- module - provides  'task' command handler
+whereis = require ("whereis").whereis -- module - provides 'whereis' command handler
 
--- work out file name of player state file
+-- standard loading/saving of player state file
 function get_file_name ()
 local charinfo = mud.character_info ()
   return systeminfo.PLAYER_DIR .. 
@@ -38,46 +94,7 @@ local charinfo = mud.character_info ()
         ".lua"
 end -- get_file_name
 
--- player has entered game 
-function entered_game (name)
-
-if name == "Cole" then
-    send ("Character info ...")
-    tprint (mud.character_info ())
-  end -- if Cole
-
-end -- entered_game
-
--- player has entered room 'vnum'
-function entered_room (vnum)
-end -- entered_room
-
--- player has killed mob 'vnum'
-function killed_mob (vnum)
-end -- killed_mob
-
--- player has received object 'vnum'
-function got_object (vnum)
-end -- got_object
-
--- player is looking around
-function looking (arg)
-end -- looking
-
--- player has entered game 
-function reconnected (name)
-   dofile (get_file_name ())  -- load player state
-end -- reconnected
-
--- new player has joined game
-function new_player (name)
-end -- new_player
-
--- periodic update (each minute)
-function char_update ()
-end -- char_update
-
--- player is being saved
+-- called to save a player
 function saving ()
 local charinfo = mud.character_info ()
 local fname = get_file_name ()
@@ -85,10 +102,40 @@ local fname = get_file_name ()
    local f = assert (io.open (fname, "w"))
    f:write (os.date ("-- Saved at: %c\n\n"))
    f:write (string.format ("-- Extra save file for %s\n\n", charinfo.name))
+
+   for _, func in ipairs (handlers.saving) do
+      func (f)  -- call each handler to write to this file
+   end -- for
    
-   f:write ((serialize.save ("current_quests")), "\n")
-   f:write ((serialize.save ("completed_quests")), "\n")
    f:close ()
 
-   fsend ("*** Saved into file %s", get_file_name ())
 end -- saving
+
+function entered_game (name)
+ if name == "Cole" then
+    send ("Character info ...")
+    tprint (mud.character_info ())
+    send ("Mud info ...")
+    tprint (mud.sysdata ())
+    tprint (mud.system_info ())
+  end -- if Cole
+end
+
+-- after player reconnects, load his/her state file
+function reconnected (name)
+
+  local fname = get_file_name ()
+  local f = loadfile (fname)
+  
+  if f then
+    f ()  -- execute it
+  else
+    io.stderr:write ("Warning - no state file: " .. fname .. "\n")
+  end 
+   
+  for _, func in ipairs (handlers.reconnected) do
+    func (name)  -- call each handler to let them know
+  end -- for
+ 
+end -- reconnected
+

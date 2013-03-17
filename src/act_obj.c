@@ -880,6 +880,12 @@ void do_give( CHAR_DATA * ch, char *argument )
       act( AT_ACTION, "You give $N some credits.", ch, NULL, victim, TO_CHAR );
       send_to_char( "OK.\n\r", ch );
       mprog_bribe_trigger( victim, ch, amount );
+      
+      if (IS_NPC (victim))
+         call_lua_mob_num (ch, "bribe", victim->pIndexData->vnum, amount);
+      else
+         call_lua_char_num (ch, "bribe", ch->name, amount);
+         
       if( IS_SET( sysdata.save_flags, SV_GIVE ) && !char_died( ch ) )
          save_char_obj( ch );
       if( IS_SET( sysdata.save_flags, SV_RECEIVE ) && !char_died( victim ) )
@@ -943,6 +949,12 @@ void do_give( CHAR_DATA * ch, char *argument )
    obj = obj_to_char( obj, victim );
 
    mprog_give_trigger( victim, ch, obj );
+
+   if (IS_NPC (victim))
+     call_lua_mob_num (ch, "give", victim->pIndexData->vnum, obj->pIndexData->vnum);
+   else
+     call_lua_char_num (ch, "give", ch->name, obj->pIndexData->vnum);
+     
    if( IS_SET( sysdata.save_flags, SV_GIVE ) && !char_died( ch ) )
       save_char_obj( ch );
    if( IS_SET( sysdata.save_flags, SV_RECEIVE ) && !char_died( victim ) )

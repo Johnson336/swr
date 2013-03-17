@@ -3582,4 +3582,20 @@ Level       102
 Log         0
 End
 
+#COMMAND
+Name        task~
+Code        do_task
+Position    100
+Level       0
+Log         0
+End
+
+#COMMAND
+Name        whereis~
+Code        do_whereis
+Position    100
+Level       0
+Log         0
+End
+
 #END

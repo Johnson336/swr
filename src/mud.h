@@ -119,6 +119,7 @@ typedef struct social_type SOCIALTYPE;
 typedef struct cmd_type CMDTYPE;
 typedef struct killed_data KILLED_DATA;
 typedef struct wizent WIZENT;
+typedef struct extended_bitvector EXT_BV;
 
 /*
  * Function types.
@@ -186,6 +187,8 @@ typedef ch_ret SPELL_FUN args( ( int sn, int level, CHAR_DATA * ch, void *vo ) )
  */
 #define MAX_EXP_WORTH	       500000
 #define MIN_EXP_WORTH		   25
+
+#define MAX_VNUM 500000   /* Game can hold up to 2 billion but this is set low for protection in certain cases */
 
 #define MAX_REXITS		   20 /* Maximum exits allowed in 1 room */
 #define MAX_SKILL		  276
@@ -282,6 +285,24 @@ typedef enum
 #define WT_IMM    2
 #define WT_AVATAR 1
 #define WT_NEWBIE 3
+
+/*
+ * Defines for extended bitvectors
+ */
+#ifndef INTBITS
+#define INTBITS	32
+#endif
+#define XBM		31 /* extended bitmask   ( INTBITS - 1 )  */
+#define RSV		5  /* right-shift value  ( sqrt(XBM+1) )  */
+#define XBI		4  /* integers in an extended bitvector   */
+#define MAX_BITS	XBI * INTBITS
+/*
+ * Structure for extended bitvectors -- Thoric
+ */
+struct extended_bitvector
+{
+   unsigned int bits[XBI];
+};
 
 #include "color.h"
 #ifdef IMC
@@ -2748,6 +2769,43 @@ extern short gsn_duinduogwuin;
 #define REMOVE_BIT(var, bit)	((var) &= ~(bit))
 #define TOGGLE_BIT(var, bit)	((var) ^= (bit))
 
+
+/*
+ * Macros for accessing virtually unlimited bitvectors.		-Thoric
+ *
+ * Note that these macros use the bit number rather than the bit value
+ * itself -- which means that you can only access _one_ bit at a time
+ *
+ * This code uses an array of integers
+ */
+
+/*
+ * The functions for these prototypes can be found in misc.c
+ * They are up here because they are used by the macros below
+ */
+bool ext_is_empty args( ( EXT_BV * bits ) );
+void ext_clear_bits args( ( EXT_BV * bits ) );
+int ext_has_bits args( ( EXT_BV * var, EXT_BV * bits ) );
+bool ext_same_bits args( ( EXT_BV * var, EXT_BV * bits ) );
+void ext_set_bits args( ( EXT_BV * var, EXT_BV * bits ) );
+void ext_remove_bits args( ( EXT_BV * var, EXT_BV * bits ) );
+void ext_toggle_bits args( ( EXT_BV * var, EXT_BV * bits ) );
+
+/*
+ * Here are the extended bitvector macros:
+ */
+#define xIS_SET(var, bit)	((var).bits[(bit) >> RSV] & 1 << ((bit) & XBM))
+#define xSET_BIT(var, bit)	((var).bits[(bit) >> RSV] |= 1 << ((bit) & XBM))
+#define xSET_BITS(var, bit)	(ext_set_bits(&(var), &(bit)))
+#define xREMOVE_BIT(var, bit)	((var).bits[(bit) >> RSV] &= ~(1 << ((bit) & XBM)))
+#define xREMOVE_BITS(var, bit)	(ext_remove_bits(&(var), &(bit)))
+#define xTOGGLE_BIT(var, bit)	((var).bits[(bit) >> RSV] ^= 1 << ((bit) & XBM))
+#define xTOGGLE_BITS(var, bit)	(ext_toggle_bits(&(var), &(bit)))
+#define xCLEAR_BITS(var)	(ext_clear_bits(&(var)))
+#define xIS_EMPTY(var)		(ext_is_empty(&(var)))
+#define xHAS_BITS(var, bit)	(ext_has_bits(&(var), &(bit)))
+#define xSAME_BITS(var, bit)	(ext_same_bits(&(var), &(bit)))
+
 /*
  * Memory allocation macros.
  */
@@ -3654,6 +3712,7 @@ DECLARE_DO_FUN( do_stun );
 DECLARE_DO_FUN( do_switch );
 DECLARE_DO_FUN( do_tail );
 DECLARE_DO_FUN( do_tamp );
+DECLARE_DO_FUN( do_task );
 DECLARE_DO_FUN( do_tell );
 DECLARE_DO_FUN( do_time );
 DECLARE_DO_FUN( do_timecmd );
@@ -3680,6 +3739,7 @@ DECLARE_DO_FUN( do_west );
 DECLARE_DO_FUN( do_where );
 DECLARE_DO_FUN( do_who );
 DECLARE_DO_FUN( do_whois );
+DECLARE_DO_FUN( do_whereis );
 DECLARE_DO_FUN( do_wimpy );
 DECLARE_DO_FUN( do_wizhelp );
 DECLARE_DO_FUN( do_wizlist );
@@ -3885,7 +3945,8 @@ DECLARE_SPELL_FUN( spell_cure_addiction );
 #define SOCIAL_FILE	SYSTEM_DIR "socials.dat"   /* Socials       */
 #define COMMAND_FILE	SYSTEM_DIR "commands.dat"  /* Commands      */
 
-#define LUA_STARTUP   LUA_DIR "startup.lua"  /* script initialization */
+#define LUA_STARTUP   LUA_DIR "startup.lua"  /* script initialization - characters */
+#define LUA_MUD_STARTUP   LUA_DIR "startup_mud.lua"  /* script initialization - mud */
 
 #define USAGE_FILE	SYSTEM_DIR "usage.txt"  /* How many people are on 
                                               * every half hour - trying to
@@ -3909,17 +3970,6 @@ DECLARE_SPELL_FUN( spell_cure_addiction );
 #define	ST	SOCIALTYPE
 #define SK	SKILLTYPE
 #define SH      SHIP_DATA
-
-
-
-/*
-* Lua stuff (Nick Gammon)
-*/
-
-void open_lua  (CHAR_DATA * ch);
-void close_lua (CHAR_DATA * ch);
-void call_lua (CHAR_DATA * ch, const char * fname, const char * argument);
-void call_lua_num (CHAR_DATA * ch, const char * fname, const int argument);
 
 
 /* act_comm.c */
@@ -4466,6 +4516,7 @@ bool in_hash_table( char *str );
 
 /* newscore.c */
 char *get_race args( ( CHAR_DATA * ch ) );
+int get_main_ability( CHAR_DATA * ch );
 
 #undef	SK
 #undef	ST
@@ -4568,3 +4619,36 @@ void oprog_act_trigger( char *buf, OBJ_DATA * mobj, CHAR_DATA * ch, OBJ_DATA * o
 #ifdef RPROG_ACT_TRIGGER
 void rprog_act_trigger( char *buf, ROOM_INDEX_DATA * room, CHAR_DATA * ch, OBJ_DATA * obj, void *vo );
 #endif
+
+
+/*
+ * Lua stuff (Nick Gammon)
+ */
+ 
+ void open_lua  (CHAR_DATA * ch);  /* set up Lua state */
+ void close_lua (CHAR_DATA * ch);  /* close down Lua state, if it exists */
+ 
+ /* call function fname, passing a string argument */
+ void call_lua (CHAR_DATA * ch, const char * fname, const char * argument);
+ 
+ /* call function fname, passing a numeric argument */
+ void call_lua_num (CHAR_DATA * ch, const char * fname, const int argument);
+ /* call function fname, for victim named 'victim', passing a numeric argument */
+ void call_lua_char_num (CHAR_DATA * ch, 
+                        const char * fname, 
+                        const char * victim, 
+                        const int argument);
+ /* call function fname, for victim vnum 'victim', passing a numeric argument */
+ void call_lua_mob_num (CHAR_DATA * ch, 
+                        const char * fname, 
+                        const int victim, 
+                        const int argument);
+
+                        
+ void open_mud_lua (void);    /* set up Lua state - entire MUD */
+ void close_mud_lua (void);   /* close Lua state - entire MUD */
+ int call_mud_lua (const char * fname, const char * argument);  /* call function - entire MUD */
+ void call_mud_lua_char_num (const char * fname, 
+                             const char * str, 
+                             const int num);
+

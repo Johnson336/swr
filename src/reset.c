@@ -865,6 +865,10 @@ void reset_area( AREA_DATA *area )
 
    if( !area->first_room )
       return;
+      
+   /* see if Lua script will handle it */
+   if (call_mud_lua ("reset_area", area->filename))
+     return;
 
    for( room = area->first_room; room; room = room->next_aroom )
       reset_room( room );
