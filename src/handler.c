@@ -1073,6 +1073,8 @@ void char_to_room( CHAR_DATA * ch, ROOM_INDEX_DATA * pRoomIndex )
    if( !IS_NPC( ch ) && IS_SET( ch->in_room->room_flags, ROOM_SAFE ) && get_timer( ch, TIMER_SHOVEDRAG ) <= 0 )
       add_timer( ch, TIMER_SHOVEDRAG, 10, NULL, 0 );   /*-30 Seconds-*/
 
+      
+   call_lua_num (ch, "entered_room", pRoomIndex->vnum);
    /*
     * Delayed Teleport rooms             -Thoric
     * Should be the last thing checked in this function
@@ -1152,6 +1154,10 @@ OBJ_DATA *obj_to_char( OBJ_DATA * obj, CHAR_DATA * ch )
    }
    else if( !IS_SET( extra_flags, ITEM_MAGIC ) )
       ch->carry_weight += oweight;
+      
+      
+   call_lua_num (ch, "got_object", obj->pIndexData->vnum);
+   
    return ( oret ? oret : obj );
 }
 
@@ -3916,6 +3922,10 @@ void add_kill( CHAR_DATA * ch, CHAR_DATA * mob )
       return;
 
    vnum = mob->pIndexData->vnum;
+   
+   call_lua_num (ch, "killed_mob", vnum);
+   call_mud_lua_char_num ("killed_mob", ch->name, vnum);
+   
    track = URANGE( 2, ( ( ch->skill_level[COMBAT_ABILITY] + 3 ) * MAX_KILLTRACK ) / LEVEL_AVATAR, MAX_KILLTRACK );
    for( x = 0; x < track; x++ )
       if( ch->pcdata->killed[x].vnum == vnum )

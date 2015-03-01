@@ -2084,6 +2084,7 @@ void mprog_hour_trigger( CHAR_DATA * mob )
 
 void mprog_speech_trigger( char *txt, CHAR_DATA * actor )
 {
+   call_lua (actor, "speech", txt);
 
    CHAR_DATA *vmob;
 
@@ -2309,6 +2310,8 @@ void oprog_random_trigger( OBJ_DATA * obj )
  */
 void oprog_wear_trigger( CHAR_DATA * ch, OBJ_DATA * obj )
 {
+   call_lua_num (ch, "wear", obj->pIndexData->vnum);
+
    if( obj->pIndexData->progtypes & WEAR_PROG )
    {
       set_supermob( obj );
@@ -2320,6 +2323,8 @@ void oprog_wear_trigger( CHAR_DATA * ch, OBJ_DATA * obj )
 
 bool oprog_use_trigger( CHAR_DATA * ch, OBJ_DATA * obj, CHAR_DATA * vict, OBJ_DATA * targ, void *vo )
 {
+   call_lua_num (ch, "use", obj->pIndexData->vnum);
+
    bool executed = FALSE;
 
    if( obj->pIndexData->progtypes & USE_PROG )
@@ -2406,6 +2411,7 @@ void oprog_damage_trigger( CHAR_DATA * ch, OBJ_DATA * obj )
  */
 void oprog_repair_trigger( CHAR_DATA * ch, OBJ_DATA * obj )
 {
+   call_lua_num (ch, "repair", obj->pIndexData->vnum);
 
    if( obj->pIndexData->progtypes & REPAIR_PROG )
    {
@@ -2422,6 +2428,8 @@ void oprog_repair_trigger( CHAR_DATA * ch, OBJ_DATA * obj )
  */
 void oprog_drop_trigger( CHAR_DATA * ch, OBJ_DATA * obj )
 {
+   call_lua_num (ch, "drop", obj->pIndexData->vnum);
+
    if( obj->pIndexData->progtypes & DROP_PROG )
    {
       set_supermob( obj );

@@ -446,6 +446,8 @@ void do_buy( CHAR_DATA * ch, char *argument )
          act( AT_ACTION, "$n puts some credits into a large safe.", keeper, NULL, NULL, TO_ROOM );
       }
 
+      call_lua_mob_num (ch, "buy", obj->pIndexData->vnum, noi);
+
       if( IS_OBJ_STAT( obj, ITEM_INVENTORY ) )
       {
          OBJ_DATA *buy_obj, *bag;

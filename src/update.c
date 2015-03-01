@@ -303,6 +303,10 @@ void advance_level( CHAR_DATA * ch, int ability )
 
    if( !IS_NPC( ch ) )
       REMOVE_BIT( ch->act, PLR_BOUGHT_PET );
+      
+  
+   call_lua_num (ch, "advance_level", ch->top_level);
+
 
    return;
 }
@@ -1234,6 +1238,8 @@ void char_update( void )
          bug( "char_update: ch->prev->next != ch", 0 );
          return;
       }
+      
+      call_lua (ch, "char_update", NULL);
 
       /*
        *  Do a room_prog rand check right off the bat

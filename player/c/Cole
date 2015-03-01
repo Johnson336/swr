@@ -6,11 +6,11 @@ Race         0
 MainAbility  7
 Languages    -1 8
 Toplevel     105
-Played       55588
+Played       90939
 Room         100
 HpManaMove   5000 5000 0 0 5000 5000
 Force        18 0 5000 5000
-Gold         2142410760
+Gold         2142420760
 Bank         5000000
 Ability        0 200 19999999
 Ability        1 200 19800640
@@ -20,35 +20,35 @@ Ability        4 200 19800500
 Ability        5 200 19800500
 Ability        6 200 19800500
 Ability        7 200 19834950
-Act          637564536
-Position     8
+Act          570455672
+Position     5
 SavingThrows 0 0 0 0 0
 Alignment    -1000
 Glory        0
 MGlory       0
 Hitroll      85
 Damroll      62
-Armor        -320
+Armor        -300
 Immune       639
 Restore_time 1239733224
 Mentalstate  0
 Password     n¾N3Œªãxœªó}n¼³~
-Lastplayed   1258800334
+Lastplayed   1363189413
 Bamfin       %s jumps out of a hole in your pocket.~
 Bamfout      You blink once and %s is gone.~
-Rank         &PC&plownfish&z~
-Title        &zA giant &Rfla&rme&Ythro&Ower~
+Rank         &wK&zingpin&w~
+Title        &zCole~
 AuthedBy     professor schoolmaster teacher headmaster~
 Addiction    0 0 0 0 0 0 0 0 0 0
 Druglevel    0 0 0 0 0 0 0 0 0 0
 WizInvis     100
 Flags        2048
-MKills       102
+MKills       103
 MDeaths      0
 AttrPerm     18 18 18 18 18 18 18
 AttrMod      0 0 0 0 0 0 0
 Condition    0 46 38 115
-Site         localhost
+Site         cnmeyer-intel
 Spell        100 'affect mind'
 Spell        100 'alertness'
 Spell        100 'armor'
@@ -210,7 +210,7 @@ Weapon       100 'force pikes'
 Weapon       100 'lightsabers'
 Weapon       100 'vibro-blades'
 Tongue       100 'common'
-AffectData   'armor' 2538 -20  17          0
+Killed       4 1
 Killed       203 1
 Killed       304 1
 Killed       313 1
@@ -224,7 +224,7 @@ End
 Vnum         32275
 WearLoc      16
 Level        105
-Values       11 7 28 6 212 1000
+Values       11 7 28 6 74 1000
 End
 
 #OBJECT
@@ -239,16 +239,16 @@ Level        1
 End
 
 #OBJECT
-Count        9
-Vnum         10488
-Values       500 500 0 0 0 0
-End
-
-#OBJECT
 Vnum         331
 WearLoc      12
 Level        8
 Values       3 4 0 0 0 0
+End
+
+#OBJECT
+Count        9
+Vnum         10488
+Values       500 500 0 0 0 0
 End
 
 #END

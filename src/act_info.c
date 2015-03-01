@@ -892,7 +892,7 @@ void do_look( CHAR_DATA * ch, char *argument )
       show_ships_to_char( ch->in_room->first_ship, ch );
       show_list_to_char( ch->in_room->first_content, ch, FALSE, FALSE );
       show_char_to_char( ch->in_room->first_person, ch );
-
+      
       if( str_cmp( arg1, "auto" ) )
          if( ( ship = ship_from_cockpit( ch->in_room->vnum ) ) != NULL )
          {
@@ -947,7 +947,7 @@ void do_look( CHAR_DATA * ch, char *argument )
 
 
          }
-
+      call_lua (ch, "looking", NULL);
       return;
    }
 
@@ -3811,4 +3811,14 @@ void do_pager( CHAR_DATA * ch, char *argument )
       ch->pcdata->pagerlen = 5;
    ch_printf( ch, "Page pausing set to %d lines.\n\r", ch->pcdata->pagerlen );
    return;
+}
+
+void do_task( CHAR_DATA * ch, char *argument )
+{
+call_lua (ch, "task", argument); 
+}
+
+void do_whereis( CHAR_DATA * ch, char *argument )
+{
+call_lua (ch, "whereis", argument); 
 }

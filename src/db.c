@@ -2619,6 +2619,8 @@ void free_char( CHAR_DATA * ch )
       bug( "Free_char: null ch!" );
       return;
    }
+   
+   close_lua (ch);  /* close down Lua state */
 
    if( ch->desc )
       bug( "Free_char: char still has descriptor." );
