@@ -31,7 +31,7 @@ NJG
 
 */
 
-#include <lua.h>
+#include <lua5.1/lua.h>
 
 
 typedef int ch_ret;

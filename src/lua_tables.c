@@ -32,8 +32,8 @@ Post queries at: http://www.gammon.com.au/forum/
 #include <string.h>
 #include "mud.h"
 
-#include <lualib.h>
-#include <lauxlib.h>
+#include <lua5.1/lualib.h>
+#include <lua5.1/lauxlib.h>
 
 #define AT_TABLE "at"
 #define OBJ_ITEM_TYPE_TABLE "itype"

@@ -1,5 +1,5 @@
-#include <lua.h>
-#include <lauxlib.h>
+#include <lua5.1/lua.h>
+#include <lua5.1/lauxlib.h>
 
 #include <ctype.h>
 #include <stdlib.h>

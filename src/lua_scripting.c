@@ -35,8 +35,8 @@ Description of functions in this file is at:
 #include <time.h>
 #include "mud.h"
 
-#include <lualib.h>
-#include <lauxlib.h>
+#include <lua5.1/lualib.h>
+#include <lua5.1/lauxlib.h>
 
 lua_State *L_mud = NULL;  /* Lua state for entire MUD */
 

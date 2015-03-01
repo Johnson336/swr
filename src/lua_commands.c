@@ -28,8 +28,8 @@
 #include <sys/wait.h>
 #include "mud.h"
 
-#include <lualib.h>
-#include <lauxlib.h>
+#include <lua5.1/lualib.h>
+#include <lua5.1/lauxlib.h>
 
 #define COMMAND_LIBRARY "cmd"
 

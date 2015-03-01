@@ -2,12 +2,12 @@ CC      = gcc
 PROF    = 
 
 #Uncomment to compile in Cygwin
-CYGWIN = -DCYGWIN
+#CYGWIN = -DCYGWIN
 
 #Uncomment the line below if you are getting warnings about undefined math functions
-#NEED_MATH = -lm
+NEED_MATH = -lm
 
-L_FLAGS = $(PROF) $(NEED_MATH) -lz -llua
+L_FLAGS = $(PROF) $(NEED_MATH) -lz -llua5.1
 
 #IMC2 - Comment out to disable IMC2 support
 IMC = 1
